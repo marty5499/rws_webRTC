@@ -2,20 +2,26 @@
 <html>
 
 <head>
-  <title>webRTC_canvas.html</title>
+  <title>camera_openCV.html</title>
   <meta charset="utf-8">
   <meta name="description" content="WebRTC code samples">
   <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
   <base target="_blank">
-  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body>
   <div id="container">
     <video id="remoteVideo" hidden></video>
     <canvas id='canvasInput' style='display:none' width=640 height=480></canvas>
+  </div>
+  <div style='margin:auto;'>
+    <button id='btn1' onclick='btn0()'>no Filter</button>
+    <button id='btn1' onclick='btn1()'>Filter 1</button>
+    <button id='btn2' onclick='btn2()'>Filter 2</button>
+    <button id='btn3' onclick='btn3()'>Filter 3</button>
   </div>
   <script src="js/common.js"></script>
   <script async src="js/opencv.js" onload="onOpenCvReady();"></script>
@@ -31,9 +37,25 @@
     video.onloadeddata = function() {
       canvas.style.display = '';
       updateCanvas(function() {
-        test1('canvasInput');
+        test('canvasInput');
       });
     }
+  }
+
+  function btn0() {
+    test = function() {}
+  }
+
+  function btn1() {
+    test = test1;
+  }
+
+  function btn2() {
+    test = test2;
+  }
+
+  function btn3() {
+    test = test3;
   }
   </script>
 </body>

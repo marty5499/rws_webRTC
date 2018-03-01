@@ -369,8 +369,6 @@ function doSend(data) {
 }
 
 function doDisconnect() {
-  connectButton.disabled = false;
-  disconnectButton.disabled = true;
   if (websocket.readyState == 1) {
     websocket.close();
   };

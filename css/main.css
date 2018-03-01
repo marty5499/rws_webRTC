@@ -60,7 +60,7 @@ margin: -1.3em 0 2em 0;
 @media screen and (min-width: 1000px) {
 /* hack! to detect non-touch devices */
   div#links a {
-    line-height: 0.8em;
+		line-height: 0.8em;
   }
 }
 
@@ -126,7 +126,7 @@ padding: 1em 1.5em 1.3em 1.5em;
 }
 
 div#links {
-  padding: 0.5em 0 0 0;
+	padding: 0.5em 0 0 0;
 }
 
 h1 {

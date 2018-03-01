@@ -4,21 +4,25 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <script src="js/scale.fix.js"></script>
-  <script src="js/camvas.js"></script>
+  <script src="js/common.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 
 <body>
+  <video id="remoteVideo" hidden></video>
   <canvas width=640 height=480></canvas>
   <script>
-  window.onload = function() {
-    var ctx = document.getElementsByTagName('canvas')[0].getContext('2d')
-    var draw = function(video, dt) {
-      ctx.drawImage(video, 0, 0)
-    }
-    var myCamvas = new camvas(ctx, draw)
+  var video = window.video = document.querySelector('video');
+  var canvas = window.canvas = document.querySelector('canvas');
+  var ctx = canvas.getContext('2d');
+
+  openCamera();
+  function onOpenCvReady() {
+    updateCanvas(function() {
+      //dosomething...
+    });
   }
+  video.onloadeddata = onOpenCvReady;
   </script>
 </body>
 

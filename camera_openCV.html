@@ -18,7 +18,8 @@
     <canvas id='canvasInput' style='display:none' width=640 height=480></canvas>
   </div>
   <script src="js/common.js"></script>
-  <script src="js/webRTC.js"></script>
+  <script async src="js/opencv.js" onload="onOpenCvReady();"></script>
+  <script src="js/opencv_sample.js"></script>
   <script src="js/adapter.js"></script>
   <script>
   var video = window.video = document.querySelector('video');
@@ -26,14 +27,14 @@
   var ctx = canvas.getContext('2d');
 
   function onOpenCvReady() {
-    canvas.style.display = '';
-    updateCanvas(function() {
-      //dosomething...
-    });
+    openCamera();
+    video.onloadeddata = function() {
+      canvas.style.display = '';
+      updateCanvas(function() {
+        test1('canvasInput');
+      });
+    }
   }
-
-  doConnect("ws://192.168.0.195:8889/rws/ws");
-  video.onloadeddata = onOpenCvReady;
   </script>
 </body>
 

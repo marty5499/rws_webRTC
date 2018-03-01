@@ -8,7 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#ffffff">
   <base target="_blank">
-  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body>
@@ -17,16 +17,15 @@
     <canvas id='canvasInput' width='320px' height='240px'></canvas>
   </div>
   <!-- <script src="js/lib/adapter.js"></script> -->
-  <script src="common.js"></script>
-  <script src="test.js"></script>
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/test.js"></script>
+  <script src="js/adapter.js"></script>
   <script>
   var ctx = document.getElementsByTagName('canvas')[0].getContext('2d')
   var canvas = window.canvas = document.querySelector('canvas');
   var video = window.video = document.querySelector('video');
 
-  function onOpenCvReady() {
-  }
+  function onOpenCvReady() {}
 
   function test1(id) {
     let src = cv.imread(id);
@@ -49,9 +48,6 @@
     var self = this
     var last = Date.now()
     var loop = function() {
-      // For some effects, you might want to know how much time is passed
-      // since the last frame; that's why we pass along a Delta time `dt`
-      // variable (expressed in milliseconds)
       var dt = Date.now - last
       draw(self.video, dt)
       last = Date.now()
@@ -60,7 +56,7 @@
     requestAnimationFrame(loop)
   }
   </script>
-  <script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+  <script async src="js/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
 </body>
 
 </html>

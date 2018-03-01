@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>webRTC_canvas.html</title>
+  <meta charset="utf-8">
+  <meta name="description" content="WebRTC code samples">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#ffffff">
+  <base target="_blank">
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <div id="container">
+    <video id="remoteVideo" autoplay muted width="100%" height="100%" hidden></video>
+    <canvas width='320px' height='240px'></canvas>
+  </div>
+  <!-- <script src="js/lib/adapter.js"></script> -->
+  <script src="common.js"></script>
+  <script src="test.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script>
+  var ctx = document.getElementsByTagName('canvas')[0].getContext('2d')
+  var canvas = window.canvas = document.querySelector('canvas');
+  var video = window.video = document.querySelector('video');
+
+
+  function draw(video, dt) {
+    ctx.drawImage(video, 0, 0);
+  }
+
+  function update() {
+    var self = this
+    var last = Date.now()
+    var loop = function() {
+      // For some effects, you might want to know how much time is passed
+      // since the last frame; that's why we pass along a Delta time `dt`
+      // variable (expressed in milliseconds)
+      var dt = Date.now - last
+      draw(self.video, dt)
+      last = Date.now()
+      requestAnimationFrame(loop)
+    }
+    requestAnimationFrame(loop)
+  }
+  doConnect();
+  update();
+  </script>
+</body>
+
+</html>
